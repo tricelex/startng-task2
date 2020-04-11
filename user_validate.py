@@ -1,4 +1,30 @@
-from my_functions import generate_password, validate_password, show_message
+import random
+import string
+
+
+def generate_password(fname, lname):
+	letters = string.ascii_lowercase
+	randomvars = ''.join(random.choice(letters) for i in range(5))
+	rand_password = fname[0:2] + lname[0:2] + randomvars
+	return rand_password
+
+
+def validate_password(my_password):
+	new_user_input_password = ''
+	length = 7
+	while len(my_password) < length:
+		new_user_input_password = input(
+			'Please Enter new password equal or greater than 7 characters: ')
+	return new_user_input_password
+
+
+def show_message(new_employee):
+	print('\nEmployee Information: ')
+	print("FirstName: " + new_employee['firstName'])
+	print("LastName: " + new_employee['lastName'])
+	print("Email: " + new_employee['email'])
+	print("Password: " + new_employee['password'])
+
 
 is_running = True
 all_employees = []
@@ -34,7 +60,6 @@ while is_running:
 			break
 		else:
 			satisfied = input('Please Enter either Y or N: ')
-
 
 for user in all_employees:
 	print('')
